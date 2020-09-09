@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/erikrios/jolali-notes-backend/issues"
   },
-  "homepage": "https://github.com/erikrios/jolali-notes-backend#readme"
+  "homepage": "https://github.com/erikrios/jolali-notes-backend#readme",
+  "dependencies": {
+    "config": "^3.3.1"
+  }
 }
