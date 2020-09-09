@@ -4,7 +4,11 @@ const config = require('config');
 module.exports = function () {
     const connectionString = config.get('db');
 
-    mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
+    mongoose.connect(connectionString, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false
+    })
         .then(() => { console.log('Connected to database...') })
         .catch(ex => console.log(ex));
 }
