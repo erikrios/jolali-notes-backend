@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+require('./startup/prod')(app);
+
 const home = require('./routes/home');
 
 app.use(express.json());
