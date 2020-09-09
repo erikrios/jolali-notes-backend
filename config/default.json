@@ -1,3 +1,4 @@
 {
-    "message": "Hello, Code!"
+    "message": "Hello, Code!",
+    "db": "mongodb://localhost:27017/jolaliNotesDB"
 }
