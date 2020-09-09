@@ -1,0 +1,22 @@
+{
+  "name": "jolali-notes",
+  "version": "1.0.0",
+  "description": "The RESTful API of Jolali - Online Notes with Express.js ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erikrios/jolali-notes-backend.git"
+  },
+  "keywords": [
+    "jolali-notes"
+  ],
+  "author": "Erik Rio Setiawan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/erikrios/jolali-notes-backend/issues"
+  },
+  "homepage": "https://github.com/erikrios/jolali-notes-backend#readme"
+}
