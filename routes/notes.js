@@ -1,11 +1,12 @@
 const express = require('express');
+const moment = require('moment');
 const { Note, validate } = require('../models/note');
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
-        const notes = await Note.find().select('-__v').sort('date');
+        const notes = await Note.find().select('-__v').sort('-date');
         return res.send(notes);
     } catch (err) {
         return res.status(500).send({ error: err.message });
@@ -31,7 +32,9 @@ router.post('/', async (req, res) => {
     try {
         const note = new Note({
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            date: Date.now(),
+            time: moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
         });
 
         await note.save();
@@ -51,7 +54,9 @@ router.put('/:id', async (req, res) => {
         const note = await Note.findOneAndUpdate({ _id: id }, {
             $set: {
                 'title': req.body.title,
-                'description': req.body.description
+                'description': req.body.description,
+                'date': Date.now(),
+                'time': moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
             }
         }, { new: true });
 
