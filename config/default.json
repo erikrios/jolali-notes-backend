@@ -1,4 +1,5 @@
 {
     "message": "Hello, Code!",
-    "db": "mongodb://localhost:27017/jolaliNotesDB"
+    "db": "mongodb://localhost:27017/jolaliNotesDB",
+    "jwtPrivateKey": "jolaliNotesJwtPrivateKey"
 }
