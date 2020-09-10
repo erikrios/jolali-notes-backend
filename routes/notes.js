@@ -7,9 +7,9 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     try {
         const notes = await Note.find().select('-__v').sort('-date');
-        return res.send(notes);
+        res.send(notes);
     } catch (err) {
-        return res.status(500).send({ error: err.message });
+        res.status(500).send({ error: err.message });
     }
 });
 
@@ -19,9 +19,9 @@ router.get('/:id', async (req, res) => {
     try {
         const note = await Note.findOne({ _id: id }).select('-__v');
         if (!note) return res.status(404).send({ error: 'Note with given id was not found.' });
-        return res.send(note);
+        res.send(note);
     } catch (err) {
-        return res.status(500).send({ error: err.message });
+        res.status(500).send({ error: err.message });
     }
 });
 
@@ -38,9 +38,9 @@ router.post('/', async (req, res) => {
         });
 
         await note.save();
-        return res.send(note);
+        res.send(note);
     } catch (err) {
-        return res.status(500).send({ error: err.message });
+        res.status(500).send({ error: err.message });
     }
 });
 
@@ -61,9 +61,9 @@ router.put('/:id', async (req, res) => {
         }, { new: true });
 
         if (!note) return res.status(404).send({ error: 'Note with given id was not found.' });
-        return res.send(note);
+        res.send(note);
     } catch (err) {
-        return res.status(500).send({ error: err.message });
+        res.status(500).send({ error: err.message });
     }
 });
 
@@ -73,9 +73,9 @@ router.delete('/:id', async (req, res) => {
     try {
         const note = await Note.findOneAndDelete({ _id: id });
         if (!note) return res.status(404).send({ error: 'Note with given id was not found.' });
-        return res.send(note);
+        res.send(note);
     } catch (err) {
-        return res.status(500).send({ error: err.message });
+        res.status(500).send({ error: err.message });
     }
 });
 
