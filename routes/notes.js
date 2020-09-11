@@ -1,6 +1,7 @@
 const express = require('express');
 const moment = require('moment');
 const { Note, validate } = require('../models/note');
+const auth = require('../middleware/auth');
 
 const router = express.Router();
 
