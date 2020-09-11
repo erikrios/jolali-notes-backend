@@ -18,7 +18,9 @@ router.get('/:id', auth, async (req, res) => {
     const id = req.params.id;
 
     try {
-        const note = await Note.findOne({ 'ownerId._id': req.user._id }, { _id: id }).select('-__v');
+        const note = await Note
+            .findOne({ 'ownerId._id': req.user._id, _id: id })
+            .select('-__v');
         if (!note) return res.status(404).send({ error: 'Note with given id was not found.' });
         res.send(note);
     } catch (err) {
@@ -56,7 +58,7 @@ router.put('/:id', auth, async (req, res) => {
     const id = req.params.id;
 
     try {
-        const note = await Note.findOneAndUpdate({ 'ownerId._id': req.user._id }, { _id: id }, {
+        const note = await Note.findOneAndUpdate({ 'ownerId._id': req.user._id, _id: id }, {
             $set: {
                 'title': req.body.title,
                 'description': req.body.description,
@@ -76,7 +78,7 @@ router.delete('/:id', auth, async (req, res) => {
     const id = req.params.id;
 
     try {
-        const note = await Note.findOneAndDelete({ 'ownerId._id': req.user._id }, { _id: id });
+        const note = await Note.findOneAndDelete({ 'ownerId._id': req.user._id, _id: id });
         if (!note) return res.status(404).send({ error: 'Note with given id was not found.' });
         res.send(note);
     } catch (err) {
