@@ -5,20 +5,20 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
-        const notes = await Note.find().select('-__v').sort('-date');
+        const notes = await Note.find({ 'ownerId._id': req.user._id }).select('-__v').sort('-date');
         res.send(notes);
     } catch (err) {
         res.status(500).send({ error: err.message });
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
     const id = req.params.id;
 
     try {
-        const note = await Note.findOne({ _id: id }).select('-__v');
+        const note = await Note.findOne({ 'ownerId._id': req.user._id }, { _id: id }).select('-__v');
         if (!note) return res.status(404).send({ error: 'Note with given id was not found.' });
         res.send(note);
     } catch (err) {
@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send({ error: error.details[0].message });
 
@@ -34,6 +34,10 @@ router.post('/', async (req, res) => {
         const note = new Note({
             title: req.body.title,
             description: req.body.description,
+            ownerId: {
+                _id: req.user._id,
+                name: req.user.name
+            },
             date: Date.now(),
             time: moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
         });
@@ -45,14 +49,14 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
     const { error } = validate(req.body);
     if (error) return res.status(400).send({ error: error.details[0].message });
 
     const id = req.params.id;
 
     try {
-        const note = await Note.findOneAndUpdate({ _id: id }, {
+        const note = await Note.findOneAndUpdate({ 'ownerId._id': req.user._id }, { _id: id }, {
             $set: {
                 'title': req.body.title,
                 'description': req.body.description,
@@ -68,11 +72,11 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     const id = req.params.id;
 
     try {
-        const note = await Note.findOneAndDelete({ _id: id });
+        const note = await Note.findOneAndDelete({ 'ownerId._id': req.user._id }, { _id: id });
         if (!note) return res.status(404).send({ error: 'Note with given id was not found.' });
         res.send(note);
     } catch (err) {
