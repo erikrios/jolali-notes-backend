@@ -15,6 +15,17 @@ const noteSchema = new mongoose.Schema({
         maxlength: 1024,
         required: true
     },
+    ownerId: {
+        type: new mongoose.Schema({
+            name: {
+                type: String,
+                minlength: 5,
+                maxlength: 50,
+                required: true
+            }
+        }),
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now()
@@ -22,7 +33,8 @@ const noteSchema = new mongoose.Schema({
     time: {
         type: String,
         default: moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
-    }
+    },
+
 });
 
 const Note = mongoose.model('Note', noteSchema);
