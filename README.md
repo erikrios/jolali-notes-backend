@@ -57,7 +57,7 @@
                     }
                     ```
 ## Authorization
-- POST api/auth
+- POST /api/auth
     - Requests
         - Body
             - ```
