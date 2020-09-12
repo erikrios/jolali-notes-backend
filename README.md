@@ -1,7 +1,7 @@
-# Jolali Notes API Documentation
+# Jolali Notes API Documentations
 
 ## Home
-- GET /
+- GET / (See API Documentations)
     - Responses
         - Body
             - 200
@@ -12,7 +12,7 @@
                     ```
 
 ## Users
-- POST api/users
+- POST api/users (Register the user)
     - Requests
         - Body
             - ```
@@ -37,7 +37,7 @@
                 - Auth-Token
             - Value
                 - eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjVjNzQ1NTk4NGYyMjAwMTdiNGUzNDYiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1OTk4OTQ2MTN9.g4DzrWJRuSewcMabE-At0OnaAuI1jFc-FKeE3Bbxj3s
-- GET /api/users/me
+- GET /api/users/me (Get the user details)
     - Requests
         - Header
             - Key
@@ -57,8 +57,8 @@
                     }
                     ```
 
-## Authorization
-- POST /api/auth
+## Authentication
+- POST /api/auth (Check the user login)
     - Requests
         - Body
             - ```
@@ -75,7 +75,7 @@
                     ```
 
 ## Notes
-- POST /api/notes
+- POST /api/notes (Create a note)
     - Requests
         - Header
             - Key
@@ -106,7 +106,7 @@
                         "__v": 0
                     }
                     ```
-- GET /api/notes
+- GET /api/notes (Get all notes)
     - Requests
         - Header
             - Key
@@ -142,7 +142,7 @@
                         }
                     ]
                     ```
-- GET /api/notes/{id}
+- GET /api/notes/{id} (Get a note by id)
     - Requests
         - Header
             - Key
@@ -165,7 +165,7 @@
                         }
                     }
                     ```
-- PUT /api/notes/{id}
+- PUT /api/notes/{id} (Update a note)
     - Requests
         - Header
             - Key
@@ -196,7 +196,7 @@
                         "__v": 0
                     }
                     ```
-- DELETE /api/notes/{id}
+- DELETE /api/notes/{id} (Delete a note)
     - Requests
         - Header
             - Key
