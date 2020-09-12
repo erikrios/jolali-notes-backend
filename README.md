@@ -56,4 +56,19 @@
                         "email": "johndoe@company.com"
                     }
                     ```
-
+## Authorization
+- POST api/auth
+    - Requests
+        - Body
+            - ```
+                {
+                    "email": "johndoe@company.com",
+	                "password": "johndoe123"
+                }
+                ```
+    - Response
+        - Body
+            - 200
+                - ```
+                    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjVjNzQ1NTk4NGYyMjAwMTdiNGUzNDYiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1OTk4OTQ2MTN9.g4DzrWJRuSewcMabE-At0OnaAuI1jFc-FKeE3Bbxj3s
+                    ```
