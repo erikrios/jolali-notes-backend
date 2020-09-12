@@ -1,7 +1,7 @@
 # Jolali Notes API Documentations
 
 ## Home
-- GET / (See API Documentations)
+- GET / (The API Documentations)
     - Responses
         - Body
             - 200
