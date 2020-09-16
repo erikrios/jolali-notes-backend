@@ -3,9 +3,9 @@ const moment = require('moment');
 const { Note, validate } = require('../models/note');
 const auth = require('../middleware/auth');
 
-const router = express.Router();
 
 router.get('/', auth, async (req, res) => {
+    const router = express.Router();
     try {
         const notes = await Note.find({ 'ownerId._id': req.user._id }).select('-__v').sort('-date');
         res.send(notes);
