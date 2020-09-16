@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 module.exports = function (app) {
     app.use(express.json());
-    app.use(bodyParser.urlencoded({extended: true}))
+    app.use(bodyParser.urlencoded({ extended: true }))
     app.use('/', home);
     app.use('/api/notes', notes);
     app.use('/api/users', users);
