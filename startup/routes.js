@@ -13,7 +13,7 @@ module.exports = function (app) {
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use('/', home);
     app.use('/app-ads.txt', ads);
-    app.use('privacy', privacyPolicy);
+    app.use('/privacy', privacyPolicy);
     app.use('/api/notes', notes);
     app.use('/api/users', users);
     app.use('/api/auth', auth);
