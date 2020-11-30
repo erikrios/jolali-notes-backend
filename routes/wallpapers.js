@@ -16,7 +16,6 @@ router.get('/', async (req, res) => {
         });
 
         res.send({ data: urls });
-
     } catch (err) {
         res.status(500).send({ error: err.message });
     }
