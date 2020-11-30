@@ -6,6 +6,7 @@ const privacyPolicy = require('../routes/privacy');
 const notes = require('../routes/notes');
 const users = require('../routes/users');
 const auth = require('../routes/auth');
+const wallpapers = require('../routes/wallpapers');
 const bodyParser = require('body-parser');
 
 module.exports = function (app) {
@@ -17,4 +18,5 @@ module.exports = function (app) {
     app.use('/api/notes', notes);
     app.use('/api/users', users);
     app.use('/api/auth', auth);
+    app.use('/api/wallpapers', wallpapers);
 }
