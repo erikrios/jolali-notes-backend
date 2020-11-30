@@ -9,9 +9,9 @@ router.get('/', async (req, res) => {
     try {
         const urls = [];
 
-        s = await scrape(url);
+        $ = await scrape(url);
 
-        s('.post-body div a').each((index, element) => {
+        $('.post-body div a').each((index, element) => {
             urls[index] = $(element).attr('href');
         });
 
